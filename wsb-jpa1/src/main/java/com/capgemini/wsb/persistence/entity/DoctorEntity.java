@@ -95,4 +95,20 @@ public class DoctorEntity {
 		this.specialization = specialization;
 	}
 
+	public AddressEntity getAddress() {
+		return address;
+	}
+
+	public void setAddress(AddressEntity address) {
+		this.address = address;
+	}
+
+	public List<VisitEntity> getVisits() { // Nowe
+		return visits;
+	}
+
+	public void setVisits(List<VisitEntity> visits) { // Nowe
+		this.visits = visits;
+	}
+
 }

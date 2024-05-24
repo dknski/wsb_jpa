@@ -31,6 +31,9 @@ public class PatientEntity {
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
 
+	@Column(nullable = false)
+	private int age;
+
 	@ManyToOne
 	@JoinColumn(name = "address_id", nullable = false)
 	private AddressEntity address; // wiele pacjentow moze byc przypisanych do jednego adresu
@@ -93,5 +96,26 @@ public class PatientEntity {
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+
+
+	public AddressEntity getAddress() {
+		return address;
+	}
+
+	public void setAddress(AddressEntity address) {
+		this.address = address;
+	}
+
+	public List<VisitEntity> getVisits() {
+		return visits;
+	}
+
+	public void setVisits(List<VisitEntity> visits) {
+		this.visits = visits;
+	}
+
+	public int getAge() { return age; }
+
+	public void setAge(int age) { this.age = age; }
 
 }
