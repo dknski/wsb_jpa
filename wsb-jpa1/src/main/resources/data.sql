@@ -20,7 +20,7 @@ INSERT INTO medical_treatment (id, description, type, visit_id) VALUES (2, 'Wypa
 
 
 
-
+--Kazda wizyta ma miec informacje o lekarzu oraz pacjencie
 --SELECT
 --    v.id AS visit_id,
 --    v.description AS visit_description,
@@ -45,7 +45,31 @@ INSERT INTO medical_treatment (id, description, type, visit_id) VALUES (2, 'Wypa
 --    v.id;
 
 
+--Dane pacjentow
 --SELECT
 --    id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, age
 --FROM
 --    patient;
+
+
+
+--Znajdz pacjentow po nazwisku
+--SELECT * FROM patient WHERE last_name = 'Oko';
+
+
+
+--Znajdz wszystkie wizyty pacjenta po jego ID
+--SELECT v.* FROM visit v
+--JOIN patient p ON v.patient_id = p.id
+--WHERE p.id = 1;
+
+
+
+--Znajdz pacjentow ktorzy mieli wiecej niz 1 wizyte
+--SELECT p.* FROM patient p
+--WHERE (SELECT COUNT(v.id) FROM visit v WHERE v.patient_id = p.id) > 1;
+
+
+
+--Znajdz pacjentow po dodanym przez Ciebie polu(wiek)
+--SELECT * FROM patient WHERE age > 30;

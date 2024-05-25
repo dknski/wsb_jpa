@@ -3,14 +3,20 @@ package com.capgemini.wsb.mapper;
 import com.capgemini.wsb.dto.DoctorTO;
 import com.capgemini.wsb.dto.VisitTO;
 import com.capgemini.wsb.persistence.entity.DoctorEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Collections;
-import java.util.stream.Collectors;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public final class DoctorMapper {
+@Component
+public class DoctorMapper {
 
-    public static DoctorTO mapToTO(final DoctorEntity doctorEntity) {
+    @Autowired
+    private VisitMapper visitMapper;
+
+    public DoctorTO mapToTO(final DoctorEntity doctorEntity) {
         if (doctorEntity == null) {
             return null;
         }
@@ -26,7 +32,7 @@ public final class DoctorMapper {
 
         if (doctorEntity.getVisits() != null) {
             List<VisitTO> visits = doctorEntity.getVisits().stream()
-                    .map(VisitMapper::mapToTO)
+                    .map(visitMapper::toVisitTO)
                     .collect(Collectors.toList());
             doctorTO.setVisits(visits);
         } else {

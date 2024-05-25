@@ -2,13 +2,15 @@ package com.capgemini.wsb.mapper;
 
 import com.capgemini.wsb.dto.VisitTO;
 import com.capgemini.wsb.persistence.entity.VisitEntity;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class VisitMapper {
 
-    public static VisitTO mapToTO(final VisitEntity visitEntity) {
+    public VisitTO toVisitTO(VisitEntity visitEntity) {
         if (visitEntity == null) {
             return null;
         }
@@ -17,18 +19,19 @@ public class VisitMapper {
         visitTO.setId(visitEntity.getId());
         visitTO.setDescription(visitEntity.getDescription());
         visitTO.setTime(visitEntity.getTime());
-        visitTO.setDoctor_id(visitEntity.getDoctor().getId());
-        visitTO.setPatient_id(visitEntity.getPatient().getId());
+        visitTO.setDoctorId(visitEntity.getDoctor().getId());
+        visitTO.setPatientId(visitEntity.getPatient().getId());
 
         return visitTO;
     }
 
-    public static List<VisitTO> toVisitTOList(final List<VisitEntity> visitEntities) {
+    public List<VisitTO> toVisitTOList(List<VisitEntity> visitEntities) {
         if (visitEntities == null) {
             return null;
         }
+
         return visitEntities.stream()
-                .map(VisitMapper::mapToTO)
+                .map(this::toVisitTO)
                 .collect(Collectors.toList());
     }
 }

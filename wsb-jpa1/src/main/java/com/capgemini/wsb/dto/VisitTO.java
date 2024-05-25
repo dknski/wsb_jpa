@@ -6,11 +6,10 @@ public class VisitTO {
     private Long id;
     private String description;
     private LocalDateTime time;
-    private DoctorTO doctor;
-    private PatientTO patient;
+    private Long doctorId;
+    private Long patientId;
 
-    private Long doctor_id;
-    private Long patient_id;
+    // Getters and setters
 
     public Long getId() {
         return id;
@@ -36,35 +35,19 @@ public class VisitTO {
         this.time = time;
     }
 
-    public DoctorTO getDoctor() {
-        return doctor;
+    public Long getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctor(DoctorTO doctor) {
-        this.doctor = doctor;
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 
-    public PatientTO getPatient() {
-        return patient;
+    public Long getPatientId() {
+        return patientId;
     }
 
-    public void setPatient(PatientTO patient) {
-        this.patient = patient;
-    }
-
-    public Long getDoctor_id() {
-        return doctor_id;
-    }
-
-    public void setDoctor_id(Long doctor_id) {
-        this.doctor_id = doctor_id;
-    }
-
-    public Long getPatient_id() {
-        return patient_id;
-    }
-
-    public void setPatient_id(Long patient_id) {
-        this.patient_id = patient_id;
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
     }
 }

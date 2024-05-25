@@ -1,8 +1,8 @@
 package com.capgemini.wsb.service;
 
 import com.capgemini.wsb.dto.DoctorTO;
+import com.capgemini.wsb.dto.PatientTO;
 import com.capgemini.wsb.dto.VisitTO;
-import com.capgemini.wsb.service.impl.PatientServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +20,9 @@ public class PatientServiceTest {
 
     @Autowired
     private PatientService patientService;
-    @Autowired
-    private DoctorService doctorService;
 
     @Autowired
-    private PatientServiceImpl patientServiceImpl;
+    private DoctorService doctorService;
 
     @Transactional
     @Test
@@ -57,7 +55,7 @@ public class PatientServiceTest {
 
     @Transactional
     @Test
-    public void FindAllVisitsByPatientId() {
+    public void findAllVisitsByPatientId() {
         // Given
         Long patientId = 1L;
 
@@ -66,5 +64,46 @@ public class PatientServiceTest {
 
         // Then
         assertThat(listOfVisits.size()).isEqualTo(2);
+    }
+
+    @Transactional
+    @Test
+    public void testFindPatientsByLastName() {
+        // Given
+        String lastName = "Oko";
+
+        // When
+        List<PatientTO> patients = patientService.findPatientsByLastName(lastName);
+
+        // Then
+        assertThat(patients).isNotEmpty();
+        assertThat(patients.get(0).getLastName()).isEqualTo(lastName);
+    }
+
+    @Transactional
+    @Test
+    public void testFindPatientsWithMoreThanXVisits() {
+        // Given
+        int visitCount = 1;
+
+        // When
+        List<PatientTO> patients = patientService.findPatientsWithMoreThanXVisits(visitCount);
+
+        // Then
+        assertThat(patients).isNotEmpty();
+    }
+
+    @Transactional
+    @Test
+    public void testFindPatientsByAgeGreaterThan() {
+        // Given
+        int age = 25;
+
+        // When
+        List<PatientTO> patients = patientService.findPatientsByAgeGreaterThan(age);
+
+        // Then
+        assertThat(patients).isNotEmpty();
+        assertThat(patients.get(0).getAge()).isGreaterThan(age);
     }
 }
