@@ -1,5 +1,4 @@
 package com.capgemini.wsb.dto;
-
 import java.time.LocalDate;
 import java.util.List;
 

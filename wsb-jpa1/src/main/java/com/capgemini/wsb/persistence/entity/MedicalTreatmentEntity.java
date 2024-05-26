@@ -1,7 +1,5 @@
 package com.capgemini.wsb.persistence.entity;
-
 import com.capgemini.wsb.persistence.enums.TreatmentType;
-
 import javax.persistence.*;
 
 @Entity

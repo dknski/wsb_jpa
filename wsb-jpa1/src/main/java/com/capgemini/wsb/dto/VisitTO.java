@@ -1,5 +1,4 @@
 package com.capgemini.wsb.dto;
-
 import java.time.LocalDateTime;
 
 public class VisitTO {
@@ -9,7 +8,6 @@ public class VisitTO {
     private Long doctorId;
     private Long patientId;
 
-    // Getters and setters
 
     public Long getId() {
         return id;

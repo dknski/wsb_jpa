@@ -1,7 +1,5 @@
 package com.capgemini.wsb.persistence.entity;
-
 import com.capgemini.wsb.persistence.enums.Specialization;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

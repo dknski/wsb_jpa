@@ -1,7 +1,5 @@
 package com.capgemini.wsb.dto;
-
 import com.capgemini.wsb.persistence.enums.Specialization;
-
 import java.util.List;
 
 public class DoctorTO {
@@ -12,9 +10,8 @@ public class DoctorTO {
     private String email;
     private String doctorNumber;
     private Specialization specialization;
-    private List<VisitTO> visits; // Dodaj pole visits
+    private List<VisitTO> visits;
 
-    // Gettery i settery
     public Long getId() {
         return id;
     }

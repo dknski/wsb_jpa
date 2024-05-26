@@ -1,5 +1,4 @@
 package com.capgemini.wsb.mapper;
-
 import com.capgemini.wsb.dto.PatientTO;
 import com.capgemini.wsb.persistence.entity.PatientEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class PatientMapper {
         patientTO.setEmail(patientEntity.getEmail());
         patientTO.setPatientNumber(patientEntity.getPatientNumber());
         patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
-        patientTO.setVisits(visitMapper.toVisitTOList(patientEntity.getVisits()));  // Usunięto wywołanie statyczne
+        patientTO.setVisits(visitMapper.toVisitTOList(patientEntity.getVisits()));
         patientTO.setAge(patientEntity.getAge());
 
         return patientTO;
